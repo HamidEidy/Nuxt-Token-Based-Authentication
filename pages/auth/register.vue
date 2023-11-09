@@ -2,7 +2,11 @@
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-4">
-              
+                <div v-if="errors.length > 0" class="alert alert-danger" role="alert">
+                    <ul class="mb-0">
+                        <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+                    </ul>
+                </div>
                 <form @submit.prevent="register">
                     <div class="mb-3">
                         <label htmlFor="name" class="form-label">Name</label>
