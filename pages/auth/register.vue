@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-4">
+              
                 <form @submit.prevent="register">
                     <div class="mb-3">
                         <label htmlFor="name" class="form-label">Name</label>
@@ -33,6 +34,7 @@
 
 <script setup>
 
+const errors = ref([]);
 const formdata = reactive({
     name: "",
     email: "",
@@ -46,9 +48,9 @@ async function register() {
             method: 'POST',
             body: formdata
         })
-        console.log(user);
+        return navigateTo('/')
     } catch (error) {
-        console.log(error.data.data);
+        errors.value = Object.values(error.data.data).flat();
     }
 }
 
