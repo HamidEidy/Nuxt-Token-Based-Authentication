@@ -9,15 +9,15 @@
                     </div>
                     <div class="mb-3">
                         <label htmlFor="email" class="form-label">Email address</label>
-                        <input type="text" class="form-control" id="email"  v-model="formdata.email" />
+                        <input type="text" class="form-control" id="email" v-model="formdata.email" />
                     </div>
                     <div class="mb-3">
                         <label htmlFor="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password"  v-model="formdata.password" />
+                        <input type="password" class="form-control" id="password" v-model="formdata.password" />
                     </div>
                     <div class="mb-3">
                         <label htmlFor="c_password" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="c_password"  v-model="formdata.c_password" />
+                        <input type="password" class="form-control" id="c_password" v-model="formdata.c_password" />
                     </div>
                     <button class="btn btn-primary">
                         Register
@@ -32,14 +32,28 @@
 
 
 <script setup>
-const formdata = reactive({
-name : "",
-email : "",
-password : "",
-c_password : ""
 
-})
-function register(){
-    console.log(formdata);
+const formdata = reactive({
+    name: "",
+    email: "",
+    password: "",
+    c_password: ""
+
+});
+async function register() {
+    try {
+        const user = await $fetch('/api/auth/register', {
+            method: 'POST',
+            body: formdata
+        })
+        console.log(user);
+    } catch (error) {
+        console.log(error.data.data);
+    }
 }
+
+
+
+
+
 </script>
