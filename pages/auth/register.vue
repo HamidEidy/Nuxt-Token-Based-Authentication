@@ -60,6 +60,4 @@ async function register() {
 
 
 
-
-
 </script>
