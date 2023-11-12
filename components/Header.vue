@@ -7,28 +7,36 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <NuxtLink class="nav-link" active-class="active" to="/">Home</NuxtLink>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Posts</a>
-                    </li>
-                </ul>
+      
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <NuxtLink class="nav-link" active-class="active" to="/">Home</NuxtLink>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Posts</a>
+                </li>
+            </ul>
+     
+        
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" @click="logout" href="#">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <NuxtLink active-class="active" class="nav-link" to="/auth/register">Register</NuxtLink>
-                    </li>
-                    <li class="nav-item">
-                        <NuxtLink class="nav-link" activeClass="active" to="/auth/login">Login</NuxtLink>
-                    </li>
+                    <div class="d-flex" v-if="authUser">
+                        <li class="nav-item">
+                            <NuxtLink class="nav-link" activeClass="active" to="/profile">Profile</NuxtLink>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" @click="logout" href="#">Logout</a>
+                        </li>
+                    </div>
+                    <div class="d-flex" v-else>
+                        <li class="nav-item">
+                            <NuxtLink class="nav-link" activeClass="active" to="/auth/register">Register</NuxtLink>
+                        </li>
+                        <li class="nav-item">
+                            <NuxtLink class="nav-link" activeClass="active" to="/auth/login">Login</NuxtLink>
+                        </li>
+                    </div>
                 </ul>
+          
             </div>
         </div>
     </nav>
@@ -37,12 +45,13 @@
 
 <script setup>
 import { useToast } from 'vue-toastification';
-const toast = useToast()
-
+const toast = useToast();
+const { authUser } = useAuth();
 async function logout() {
     await useFetch('/api/auth/logout', {
         method: 'POST'
     });
+    authUser.value = null;
     toast.warning("You are logouted!")
     return navigateTo('/')
 }

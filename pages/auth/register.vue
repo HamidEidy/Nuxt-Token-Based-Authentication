@@ -5,7 +5,7 @@
                 <div v-if="errors.length > 0" class="alert alert-danger" role="alert">
                     <ul class="mb-0">
                         <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
-                    </ul>
+                    </ul> 
                 </div>
                 <form @submit.prevent="register">
                     <div class="mb-3">
@@ -36,7 +36,7 @@
 
 <script setup>
 import { useToast } from "vue-toastification";
-
+const { authUser } = useAuth()
 const loading = ref(false);
 const errors = ref([]);
 const formData = reactive({
@@ -47,14 +47,14 @@ const formData = reactive({
 });
 const toast = useToast();
 
-async function register() {
+ async function register() {
     try {
         loading.value = true;
         const user = await $fetch('/api/auth/register', {
             method: 'POST',
             body: formData
         })
-
+        authUser.value = user;
         toast.success("You are registered!");
         return navigateTo('/')
     } catch (error) {
