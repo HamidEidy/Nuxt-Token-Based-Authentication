@@ -13,7 +13,7 @@
                     <NuxtLink class="nav-link" active-class="active" to="/">Home</NuxtLink>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Posts</a>
+                    <NuxtLink class="nav-link" active-class="active" to="/posts">Posts</NuxtLink>
                 </li>
             </ul>
      
