@@ -1,7 +1,7 @@
 # Authentication in nuxt.js (Token-Based authentication)
 Registration
-
-<br>Login<br>Logout<br>Show user information in profile page<br>Show posts to people that who loged in
+![1](https://github.com/HamidEidy/nuxt-auth/assets/148962898/c6b8e51e-251d-42a3-8f5e-467763384f71)
+Login<br>Logout<br>Show user information in profile page<br>Show posts to people that who loged in
 
 # Nuxt 3 Minimal Starter
 
