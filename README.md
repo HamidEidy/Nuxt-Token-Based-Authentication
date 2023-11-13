@@ -1,4 +1,4 @@
-#Authentication in nuxt.js
+# Authentication in nuxt.js
 Registration - Login - Logout - Show user information in profile page - Show posts to people that who loged in
 
 # Nuxt 3 Minimal Starter
