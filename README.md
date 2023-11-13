@@ -1,3 +1,6 @@
+#Authentication in nuxt.js
+Registration - Login - Logout - Show user information in profile page - Show posts to people that who loged in
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
